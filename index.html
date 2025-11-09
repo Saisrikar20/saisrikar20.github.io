@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sai Srikar B | Portfolio</title>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box;font-family:"Poppins",sans-serif;}
+  body{background:#0f172a;color:#e2e8f0;}
+  header{display:flex;justify-content:space-between;align-items:center;padding:20px 10%;position:fixed;width:100%;top:0;background:rgba(15,23,42,0.95);backdrop-filter:blur(8px);z-index:10;}
+  header h1{font-size:1.5rem;color:#38bdf8;}
+  nav a{color:#e2e8f0;margin:0 15px;text-decoration:none;transition:0.3s;}
+  nav a:hover{color:#38bdf8;}
+  section{min-height:100vh;padding:120px 10% 60px;display:flex;flex-direction:column;justify-content:center;}
+  .hero{text-align:center;}
+  .hero h2{font-size:2.5rem;color:#38bdf8;margin-bottom:10px;}
+  .hero p{font-size:1.1rem;color:#94a3b8;margin-bottom:25px;}
+  .btn{display:inline-block;background:#38bdf8;color:#0f172a;padding:10px 25px;border-radius:25px;text-decoration:none;font-weight:600;transition:0.3s;margin:5px;}
+  .btn:hover{background:#0ea5e9;}
+  .skills,.projects,.certificates,.contact{max-width:800px;margin:auto;text-align:center;}
+  h3{font-size:1.8rem;color:#38bdf8;margin-bottom:20px;}
+  .skills-list,.projects-list,.cert-list{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;}
+  .skill,.project,.cert{background:#1e293b;padding:15px 20px;border-radius:10px;width:220px;transition:0.3s;}
+  .skill:hover,.project:hover{transform:translateY(-5px);background:#334155;}
+  .cert img{width:220px;height:150px;object-fit:cover;border-radius:10px;transition:transform 0.3s,filter 0.3s;}
+  .cert img:hover{transform:scale(1.05);filter:brightness(1.1);}
+  footer{text-align:center;padding:30px;background:#0f172a;border-top:1px solid #1e293b;}
+  .icons a{color:#38bdf8;margin:0 10px;font-size:1.4rem;text-decoration:none;}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Sai Srikar B</h1>
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#skills">Skills</a>
+    <a href="#certificates">Certificates</a>
+    <a href="#projects">Projects</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<section id="home" class="hero">
+  <h2>AI & Data Science Student | Cybersecurity Enthusiast</h2>
+  <p>Exploring the intersection of Artificial Intelligence, Data Science, and Cybersecurity to build smarter and safer systems.</p>
+  <div>
+    <a href="#contact" class="btn">Get in Touch</a>
+    <a href="resume.pdf" download class="btn">Download Resume</a>
+  </div>
+</section>
+
+<section id="skills" class="skills">
+  <h3>Skills</h3>
+  <div class="skills-list">
+    <div class="skill">C Programming</div>
+    <div class="skill">Python</div>
+    <div class="skill">HTML & CSS</div>
+    <div class="skill">JavaScript</div>
+    <div class="skill">Machine Learning</div>
+    <div class="skill">Linux</div>
+    <div class="skill">Virtual Machine</div>
+  </div>
+</section>
+
+<section id="certificates" class="certificates">
+  <h3>Certificates</h3>
+  <div class="cert-list">
+    <div class="cert"><img src="cert1.jpg" alt="Google Cybersecurity Certificate"></div>
+    <div class="cert"><img src="cert2.jpg" alt="AI Fundamentals Certificate"></div>
+    <div class="cert"><img src="cert3.jpg" alt="Data Science Course Certificate"></div>
+  </div>
+</section>
+
+<section id="projects" class="projects">
+  <h3>Projects</h3>
+  <div class="projects-list">
+    <div class="project"><b>Voice Stress Detector AI</b><br><small>Built using scikit-learn, NumPy, Librosa, and Streamlit.</small></div>
+    <div class="project"><b>Portfolio Website</b><br><small>Built a personal portfolio using HTML, CSS & JS.</small></div>
+    <div class="project"><b>Port Scanner</b><br><small>Created a basic multithreaded TCP port scanner in Python.</small></div>
+  </div>
+</section>
+
+<section id="contact" class="contact">
+  <h3>Contact</h3>
+  <p>Feel free to connect for collaboration or discussion.</p>
+  <p>Email: <a href="mailto:saisrikar1220@gmail.com" style="color:#38bdf8;">saisrikar1220@gmail.com</a></p>
+  <p>LinkedIn: <a href="https://www.linkedin.com/in/sai-srikar-baalaji-54b1b8359/" target="_blank" style="color:#38bdf8;">linkedin.com/in/sai-srikar-baalaji</a></p>
+  <p>GitHub: <a href="https://github.com/Saisrikar20" target="_blank" style="color:#38bdf8;">github.com/Saisrikar20</a></p>
+</section>
+
+<footer>
+  © 2025 Sai Srikar B — Built with ❤️ using HTML, CSS & JS
+</footer>
+
+<script>
+  // Smooth scrolling
+  document.querySelectorAll('nav a').forEach(link=>{
+    link.addEventListener('click', e=>{
+      e.preventDefault();
+      document.querySelector(link.getAttribute('href')).scrollIntoView({behavior:'smooth'});
+    });
+  });
+</script>
+
+</body>
+</html>
