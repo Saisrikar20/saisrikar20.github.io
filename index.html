@@ -32,6 +32,7 @@
             background-color: var(--bg-color);
             color: var(--secondary-accent);
             line-height: 1.6;
+            overflow-x: hidden;
         }
 
         .container {
@@ -97,6 +98,7 @@
         .btn:hover {
             background: var(--highlight);
             transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
         }
 
         .btn-outline {
@@ -433,27 +435,38 @@
         /* ===== CONTACT SECTION ===== */
         .contact-container {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: 1fr 1fr;
             gap: 50px;
         }
 
-        .contact-info h3 {
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .contact-card {
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: var(--transition);
+        }
+
+        .contact-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary-accent);
+        }
+
+        .contact-header {
+            display: flex;
+            align-items: center;
             margin-bottom: 20px;
         }
 
-        .contact-details {
-            margin-bottom: 30px;
-        }
-
-        .contact-item {
-            display: flex;
-            align-items: center;
-            margin-bottom: 15px;
-        }
-
         .contact-icon {
-            width: 40px;
-            height: 40px;
+            width: 50px;
+            height: 50px;
             background: var(--primary-accent);
             border-radius: 50%;
             display: flex;
@@ -461,17 +474,23 @@
             justify-content: center;
             margin-right: 15px;
             color: white;
+            font-size: 1.2rem;
+        }
+
+        .contact-details p {
+            margin-bottom: 5px;
         }
 
         .social-links {
             display: flex;
             gap: 15px;
+            margin-top: 20px;
         }
 
         .social-links a {
             width: 45px;
             height: 45px;
-            background: var(--card-bg);
+            background: var(--bg-color);
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -483,8 +502,91 @@
         .social-links a:hover {
             background: var(--primary-accent);
             transform: translateY(-5px);
+            color: white;
         }
 
+        /* Professional Platforms Section */
+        .platforms-section {
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .platforms-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+
+        .platforms-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--primary-accent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            color: white;
+            font-size: 1.2rem;
+        }
+
+        .platforms-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .platform-card {
+            background: var(--bg-color);
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            transition: var(--transition);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .platform-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary-accent);
+        }
+
+        .platform-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            color: var(--primary-accent);
+        }
+
+        .platform-name {
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: var(--secondary-accent);
+        }
+
+        .platform-description {
+            font-size: 0.9rem;
+            color: #94a3b8;
+            margin-bottom: 15px;
+        }
+
+        .platform-link {
+            display: inline-block;
+            padding: 8px 16px;
+            background: rgba(74, 144, 226, 0.2);
+            color: var(--primary-accent);
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .platform-link:hover {
+            background: var(--primary-accent);
+            color: white;
+        }
+
+        /* Contact Form */
         .contact-form input,
         .contact-form textarea {
             width: 100%;
@@ -590,11 +692,31 @@
             .timeline-item:nth-child(even)::after {
                 left: 21px;
             }
+
+            .platforms-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
         }
 
         @media (max-width: 768px) {
             .nav-links {
                 display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: rgba(13, 13, 13, 0.95);
+                flex-direction: column;
+                padding: 20px;
+                text-align: center;
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .nav-links li {
+                margin: 10px 0;
             }
             
             .mobile-menu {
@@ -616,6 +738,10 @@
             .hero-btns .btn {
                 width: 100%;
                 text-align: center;
+            }
+
+            .platforms-grid {
+                grid-template-columns: 1fr;
             }
         }
 
@@ -702,43 +828,72 @@
             <h2 class="section-title">Get In Touch</h2>
             <div class="contact-container">
                 <div class="contact-info">
-                    <h3>Let's Connect</h3>
-                    <p>I'm always open to discussing new opportunities, collaborations, or just having a chat about technology and innovation.</p>
-                    
-                    <div class="contact-details">
-                        <div class="contact-item">
+                    <!-- Contact Card 1 -->
+                    <div class="contact-card">
+                        <div class="contact-header">
                             <div class="contact-icon">
                                 <i class="fas fa-envelope"></i>
                             </div>
                             <div>
-                                <h4>Email</h4>
-                                <p>saisrikar1220@gmail.com</p>
+                                <h3>Email Me</h3>
+                                <p>I'll respond within 24 hours</p>
                             </div>
                         </div>
-                        <div class="contact-item">
+                        <div class="contact-details">
+                            <p><strong>saisrikar1220@gmail.com</strong></p>
+                            <p>Send me an email anytime for inquiries or collaborations</p>
+                        </div>
+                        <a href="mailto:saisrikar1220@gmail.com" class="btn">Send Email</a>
+                    </div>
+
+                    <!-- Contact Card 2 -->
+                    <div class="contact-card">
+                        <div class="contact-header">
                             <div class="contact-icon">
                                 <i class="fas fa-map-marker-alt"></i>
                             </div>
                             <div>
-                                <h4>Location</h4>
-                                <p>India</p>
+                                <h3>Location</h3>
+                                <p>Based in India</p>
                             </div>
                         </div>
+                        <div class="contact-details">
+                            <p><strong>Open to remote opportunities</strong></p>
+                            <p>Available for freelance projects and full-time positions</p>
+                        </div>
                     </div>
-                    
-                    <div class="social-links" id="socials-container">
-                        <!-- Social links will be populated by JavaScript -->
+
+                    <!-- Contact Card 3 -->
+                    <div class="contact-card">
+                        <div class="contact-header">
+                            <div class="contact-icon">
+                                <i class="fas fa-share-alt"></i>
+                            </div>
+                            <div>
+                                <h3>Social Profiles</h3>
+                                <p>Connect with me online</p>
+                            </div>
+                        </div>
+                        <div class="social-links" id="socials-container">
+                            <!-- Social links will be populated by JavaScript -->
+                        </div>
                     </div>
                 </div>
-                
-                <div class="contact-form">
-                    <form id="contact-form">
-                        <input type="text" placeholder="Your Name" required>
-                        <input type="email" placeholder="Your Email" required>
-                        <input type="text" placeholder="Subject" required>
-                        <textarea placeholder="Your Message" required></textarea>
-                        <button type="submit" class="btn">Send Message</button>
-                    </form>
+
+                <!-- Professional Platforms Section -->
+                <div class="platforms-section">
+                    <div class="platforms-header">
+                        <div class="platforms-icon">
+                            <i class="fas fa-laptop-code"></i>
+                        </div>
+                        <div>
+                            <h3>Professional Platforms</h3>
+                            <p>Check out my profiles on these platforms</p>
+                        </div>
+                    </div>
+                    <div class="platforms-grid" id="platforms-container">
+                        <!-- Platforms will be populated by JavaScript -->
+                    </div>
                 </div>
             </div>
         </div>
@@ -857,7 +1012,53 @@
             { name: "GitHub", url: "https://github.com/Saisrikar20", icon: "fab fa-github" },
             { name: "LinkedIn", url: "https://www.linkedin.com/in/sai-srikar-baalaji-54b1b8359/", icon: "fab fa-linkedin-in" },
             { name: "Twitter", url: "#", icon: "fab fa-twitter" },
-            { name: "Email", url: "mailto:saisrikar1220@gmail.com", icon: "fas fa-envelope" }
+            { name: "Instagram", url: "#", icon: "fab fa-instagram" }
+        ];
+
+        // Platforms data
+        const platformsData = [
+            {
+                name: "Kaggle",
+                description: "Data Science & ML competitions",
+                icon: "fab fa-kaggle",
+                url: "#",
+                color: "#20BEFF"
+            },
+            {
+                name: "LeetCode",
+                description: "Coding challenges & interviews",
+                icon: "fas fa-code",
+                url: "#",
+                color: "#FFA116"
+            },
+            {
+                name: "HackerRank",
+                description: "Programming challenges",
+                icon: "fas fa-laptop-code",
+                url: "#",
+                color: "#00EA64"
+            },
+            {
+                name: "HackTheBox",
+                description: "Cybersecurity challenges",
+                icon: "fas fa-user-secret",
+                url: "#",
+                color: "#9FEF00"
+            },
+            {
+                name: "GitHub",
+                description: "Code repositories & projects",
+                icon: "fab fa-github",
+                url: "https://github.com/Saisrikar20",
+                color: "#6CC644"
+            },
+            {
+                name: "LinkedIn",
+                description: "Professional network",
+                icon: "fab fa-linkedin",
+                url: "https://www.linkedin.com/in/sai-srikar-baalaji-54b1b8359/",
+                color: "#0077B5"
+            }
         ];
 
         // ===== PAGE MANAGEMENT =====
@@ -996,6 +1197,26 @@
             });
         }
 
+        // Render platforms
+        function renderPlatforms() {
+            const container = document.getElementById('platforms-container');
+            container.innerHTML = '';
+
+            platformsData.forEach(platform => {
+                const platformCard = document.createElement('div');
+                platformCard.className = 'platform-card';
+                platformCard.innerHTML = `
+                    <div class="platform-icon">
+                        <i class="${platform.icon}"></i>
+                    </div>
+                    <div class="platform-name">${platform.name}</div>
+                    <div class="platform-description">${platform.description}</div>
+                    <a href="${platform.url}" target="_blank" class="platform-link">View Profile</a>
+                `;
+                container.appendChild(platformCard);
+            });
+        }
+
         // ===== INITIALIZATION =====
         document.addEventListener('DOMContentLoaded', function() {
             // Render all data
@@ -1003,6 +1224,7 @@
             renderProjects();
             renderTimeline();
             renderSocials();
+            renderPlatforms();
             
             // Set up page navigation
             document.querySelectorAll('[data-page]').forEach(link => {
@@ -1013,19 +1235,18 @@
                     
                     // Close mobile menu if open
                     if (window.innerWidth <= 768) {
-                        document.querySelector('.nav-links').style.display = 'none';
+                        document.querySelector('.nav-links').classList.remove('active');
                     }
                 });
             });
             
             // Set up mobile menu
             document.querySelector('.mobile-menu').addEventListener('click', function() {
-                const navLinks = document.querySelector('.nav-links');
-                navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+                document.querySelector('.nav-links').classList.toggle('active');
             });
             
             // Set up contact form
-            document.getElementById('contact-form').addEventListener('submit', function(e) {
+            document.getElementById('contact-form')?.addEventListener('submit', function(e) {
                 e.preventDefault();
                 alert('Thank you for your message! I will get back to you soon.');
                 this.reset();
